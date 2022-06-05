@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.ramcosta.composedestinations.DestinationsNavHost
-import io.moiro.vision.screens.authentication.NavGraphs
+import io.moiro.vision.screens.NavGraphs
 import io.moiro.vision.ui.theme.VisionTheme
 
 class MainActivity : ComponentActivity() {

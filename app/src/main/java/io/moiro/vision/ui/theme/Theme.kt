@@ -11,7 +11,8 @@ private val LightColorPalette = lightColors(
     background = Pistachio,
     onPrimary = White,
     onBackground = Black,
-    secondary = Grey
+    secondary = Grey,
+    error = Red
 )
 
 private val DarkColorPalette = darkColors(
@@ -19,7 +20,8 @@ private val DarkColorPalette = darkColors(
     background = Pistachio,
     onPrimary = White,
     onBackground = Black,
-    secondary = Grey
+    secondary = Grey,
+    error = Red
 )
 
 @Composable
