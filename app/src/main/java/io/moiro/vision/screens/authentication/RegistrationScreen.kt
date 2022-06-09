@@ -1,6 +1,7 @@
 package io.moiro.vision.screens.authentication
 
 import android.widget.Toast
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
@@ -20,19 +21,17 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import com.ramcosta.composedestinations.annotation.Destination
-import com.ramcosta.composedestinations.navigation.DestinationsNavigator
-import io.moiro.vision.screens.destinations.LoginScreenDestination
+import io.moiro.vision.navigation.ScreensRoutes
 import io.moiro.vision.shared.models.RegResponse
 import io.moiro.vision.shared.models.Registration
 import io.moiro.vision.shared.services.client.ApiClient
 import retrofit2.Call
 import retrofit2.Response
 
-@Destination(start = true)
 @Composable
-fun RegistrationScreen(navigator: DestinationsNavigator) {
+fun RegistrationScreen(navController: NavController) {
     val systemUiController = rememberSystemUiController()
     val darkTheme = isSystemInDarkTheme()
     var name by remember { mutableStateOf("") }
@@ -51,7 +50,8 @@ fun RegistrationScreen(navigator: DestinationsNavigator) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(top = 70.dp),
+            .padding(top = 70.dp)
+            .background(MaterialTheme.colors.background),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
@@ -181,7 +181,7 @@ fun RegistrationScreen(navigator: DestinationsNavigator) {
                                 response: Response<RegResponse>
                             ) {
                                 if (response.isSuccessful) {
-                                    navigator.navigate(LoginScreenDestination())
+                                    navController.navigate(ScreensRoutes.LoginScreen.route)
                                 } else {
                                     Toast.makeText(
                                         context,
@@ -224,7 +224,7 @@ fun RegistrationScreen(navigator: DestinationsNavigator) {
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colors.primary,
                 modifier = Modifier.clickable {
-                    navigator.navigate(LoginScreenDestination())
+                    navController.navigate(ScreensRoutes.LoginScreen.route)
                 })
         }
     }

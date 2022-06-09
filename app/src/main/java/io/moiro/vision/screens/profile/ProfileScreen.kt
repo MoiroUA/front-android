@@ -10,7 +10,6 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Alignment
@@ -20,15 +19,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import com.ramcosta.composedestinations.annotation.Destination
-import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
-@Destination
 @Composable
-fun ProfileScreen(
-    navigator: DestinationsNavigator
-) {
+fun ProfileScreen(navController: NavController) {
     val systemUiController = rememberSystemUiController()
     val darkTheme = isSystemInDarkTheme()
     val context = LocalContext.current
@@ -41,99 +36,84 @@ fun ProfileScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colors.onPrimary)
-            .padding(top = 20.dp, bottom = 19.dp),
+            .background(MaterialTheme.colors.onPrimary),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Row(
             modifier = Modifier
-                .width(305.dp)
-                .padding(bottom = 49.dp),
-            verticalAlignment = Alignment.CenterVertically
+                .width(305.dp),
+            horizontalArrangement = Arrangement.Center
         ) {
-            Box(
-                contentAlignment = Alignment.CenterStart,
-                modifier = Modifier.weight(2f)
-            ) {
-                Icon(
-                    modifier = Modifier.size(29.dp),
-                    imageVector = Icons.Filled.ArrowBack,
-                    tint = MaterialTheme.colors.onBackground,
-                    contentDescription = "main screen"
-                )
-            }
-            Box(modifier = Modifier.weight(8f)) {
-                Text(
-                    text = "Обліковий запис",
-                    fontSize = 22.sp,
-                    fontWeight = FontWeight.Black,
-                    color = MaterialTheme.colors.onBackground
-                )
-            }
+            Text(
+                text = "Обліковий запис",
+                fontSize = 22.sp,
+                fontWeight = FontWeight.Black,
+                color = MaterialTheme.colors.onBackground
+            )
         }
+        Spacer(modifier = Modifier.height(53.dp))
         Icon(
             modifier = Modifier
-                .size(75.dp)
-                .padding(bottom = 14.dp),
+                .size(75.dp),
             imageVector = Icons.Filled.AccountCircle,
             tint = MaterialTheme.colors.primary,
             contentDescription = "user"
         )
+        Spacer(modifier = Modifier.height(14.dp))
         Text(
             text = "Ігор Вілков",
             fontSize = 23.sp,
             fontWeight = FontWeight.Black,
-            color = MaterialTheme.colors.onBackground,
-            modifier = Modifier.padding(bottom = 55.dp)
+            color = MaterialTheme.colors.onBackground
         )
+        Spacer(modifier = Modifier.height(55.dp))
         Column(modifier = Modifier.width(305.dp)) {
             Text(
                 text = "Телефон",
                 fontSize = 15.sp,
                 fontWeight = FontWeight.Black,
-                color = MaterialTheme.colors.onBackground,
-                modifier = Modifier.padding(bottom = 15.dp)
+                color = MaterialTheme.colors.onBackground
             )
+            Spacer(modifier = Modifier.height(15.dp))
             Text(
                 text = "+380 98 404 69 01",
                 fontSize = 15.sp,
                 fontWeight = FontWeight.Medium,
-                color = MaterialTheme.colors.primary,
-                modifier = Modifier.padding(bottom = 43.dp)
+                color = MaterialTheme.colors.primary
             )
+            Spacer(modifier = Modifier.height(43.dp))
             Text(
                 text = "Електронна пошта",
                 fontSize = 15.sp,
                 fontWeight = FontWeight.Black,
-                color = MaterialTheme.colors.onBackground,
-                modifier = Modifier.padding(bottom = 15.dp)
+                color = MaterialTheme.colors.onBackground
             )
+            Spacer(modifier = Modifier.height(15.dp))
             Text(
                 text = "igorvilkov404@gmail.com",
                 fontSize = 15.sp,
                 fontWeight = FontWeight.Medium,
-                color = MaterialTheme.colors.primary,
-                modifier = Modifier.padding(bottom = 43.dp)
+                color = MaterialTheme.colors.primary
             )
+            Spacer(modifier = Modifier.height(43.dp))
             Text(
                 text = "Група крові (за бажанням)",
                 fontSize = 15.sp,
                 fontWeight = FontWeight.Black,
-                color = MaterialTheme.colors.onBackground,
-                modifier = Modifier.padding(bottom = 15.dp)
+                color = MaterialTheme.colors.onBackground
             )
+            Spacer(modifier = Modifier.height(15.dp))
             Text(
                 text = "O(I)+",
                 fontSize = 15.sp,
                 fontWeight = FontWeight.Medium,
-                color = MaterialTheme.colors.primary,
-                modifier = Modifier.padding(bottom = 43.dp)
+                color = MaterialTheme.colors.primary
             )
         }
+        Spacer(modifier = Modifier.height(36.dp))
         Row(
             modifier = Modifier
-                .width(297.dp)
-                .padding(bottom = 130.dp),
+                .width(297.dp),
             horizontalArrangement = Arrangement.End
         ) {
             Text(
@@ -147,6 +127,7 @@ fun ProfileScreen(
                 }
             )
         }
+        Spacer(modifier = Modifier.height(89.dp))
         Text(
             text = "Вийти з облікового запису",
             fontSize = 15.sp,
