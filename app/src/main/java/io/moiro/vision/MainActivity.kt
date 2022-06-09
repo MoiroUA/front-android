@@ -39,7 +39,7 @@ class MainActivity : ComponentActivity() {
                 val navController = rememberNavController()
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
+                    color = MaterialTheme.colors.onPrimary
                 ) {
                     if (!isLog) {
                         AuthNav()
