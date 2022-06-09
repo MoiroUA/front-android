@@ -20,21 +20,18 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import com.ramcosta.composedestinations.annotation.Destination
-import com.ramcosta.composedestinations.navigation.DestinationsNavigator
-import io.moiro.vision.screens.destinations.ProfileScreenDestination
-import io.moiro.vision.screens.destinations.RegistrationScreenDestination
+import io.moiro.vision.navigation.ScreensRoutes
+import io.moiro.vision.shared.managers.SessionManager
 import io.moiro.vision.shared.models.Login
 import io.moiro.vision.shared.models.LoginResponse
 import io.moiro.vision.shared.services.client.ApiClient
-import io.moiro.vision.shared.managers.SessionManager
 import retrofit2.Call
 import retrofit2.Response
 
-@Destination
 @Composable
-fun LoginScreen(navigator: DestinationsNavigator) {
+fun LoginScreen(navController: NavController) {
     val systemUiController = rememberSystemUiController()
     val darkTheme = isSystemInDarkTheme()
     var email by remember { mutableStateOf("") }
@@ -132,7 +129,7 @@ fun LoginScreen(navigator: DestinationsNavigator) {
                             ) {
                                 if (response.isSuccessful) {
                                     SessionManager(context).saveAuthToken(response.body()?.authToken.toString())
-                                    navigator.navigate(ProfileScreenDestination())
+                                    navController.navigate(ScreensRoutes.ProfileScreen.route)
                                 } else {
                                     Toast.makeText(
                                         context,
@@ -172,7 +169,7 @@ fun LoginScreen(navigator: DestinationsNavigator) {
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colors.primary,
                 modifier = Modifier.clickable {
-                    navigator.navigate(RegistrationScreenDestination())
+                    navController.navigate(ScreensRoutes.RegistrationScreen.route)
                 })
         }
     }

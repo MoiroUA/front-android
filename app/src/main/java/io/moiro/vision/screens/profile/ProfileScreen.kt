@@ -20,15 +20,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import com.ramcosta.composedestinations.annotation.Destination
-import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
-@Destination
 @Composable
-fun ProfileScreen(
-    navigator: DestinationsNavigator
-) {
+fun ProfileScreen(navController: NavController) {
     val systemUiController = rememberSystemUiController()
     val darkTheme = isSystemInDarkTheme()
     val context = LocalContext.current
@@ -49,27 +45,14 @@ fun ProfileScreen(
             modifier = Modifier
                 .width(305.dp)
                 .padding(bottom = 49.dp),
-            verticalAlignment = Alignment.CenterVertically
+            horizontalArrangement = Arrangement.Center
         ) {
-            Box(
-                contentAlignment = Alignment.CenterStart,
-                modifier = Modifier.weight(2f)
-            ) {
-                Icon(
-                    modifier = Modifier.size(29.dp),
-                    imageVector = Icons.Filled.ArrowBack,
-                    tint = MaterialTheme.colors.onBackground,
-                    contentDescription = "main screen"
-                )
-            }
-            Box(modifier = Modifier.weight(8f)) {
-                Text(
-                    text = "Обліковий запис",
-                    fontSize = 22.sp,
-                    fontWeight = FontWeight.Black,
-                    color = MaterialTheme.colors.onBackground
-                )
-            }
+            Text(
+                text = "Обліковий запис",
+                fontSize = 22.sp,
+                fontWeight = FontWeight.Black,
+                color = MaterialTheme.colors.onBackground
+            )
         }
         Icon(
             modifier = Modifier
