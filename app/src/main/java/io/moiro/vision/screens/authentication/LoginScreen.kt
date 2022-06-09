@@ -48,17 +48,17 @@ fun LoginScreen(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(top = 70.dp)
-            .background(MaterialTheme.colors.background),
+            .background(MaterialTheme.colors.background)
+            .padding(top = 80.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
             text = "Вхід",
             fontSize = 50.sp,
             fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(bottom = 52.dp),
             color = MaterialTheme.colors.primary
         )
+        Spacer(modifier = Modifier.height(50.dp))
         TextField(
             value = email,
             onValueChange = { email = it },
@@ -74,11 +74,11 @@ fun LoginScreen(navController: NavController) {
                 cursorColor = MaterialTheme.colors.secondary
             ),
             modifier = Modifier
-                .size(width = 297.dp, height = 80.dp)
-                .padding(bottom = 26.dp)
+                .size(width = 297.dp, height = 50.dp)
                 .shadow(elevation = 6.dp, shape = RoundedCornerShape(30.dp)),
             shape = RoundedCornerShape(30.dp)
         )
+        Spacer(modifier = Modifier.height(23.dp))
         TextField(
             value = password,
             onValueChange = { password = it },
@@ -96,16 +96,15 @@ fun LoginScreen(navController: NavController) {
                 cursorColor = MaterialTheme.colors.secondary
             ),
             modifier = Modifier
-                .size(width = 297.dp, height = 80.dp)
-                .padding(bottom = 26.dp)
+                .size(width = 297.dp, height = 50.dp)
                 .shadow(elevation = 6.dp, shape = RoundedCornerShape(30.dp)),
             shape = RoundedCornerShape(30.dp)
         )
+        Spacer(modifier = Modifier.height(21.dp))
         Row(
             horizontalArrangement = Arrangement.End,
             modifier = Modifier
                 .width(297.dp)
-                .padding(bottom = 90.dp)
         ) {
             Text(
                 text = "Забули пароль?",
@@ -119,6 +118,7 @@ fun LoginScreen(navController: NavController) {
                     ).show()
                 })
         }
+        Spacer(modifier = Modifier.height(100.dp))
         Button(
             onClick = {
                 if (email.isNotEmpty() && password.isNotEmpty()) {
@@ -149,7 +149,7 @@ fun LoginScreen(navController: NavController) {
                 }
             },
             modifier = Modifier
-                .size(width = 297.dp, height = 59.dp)
+                .size(width = 297.dp, height = 50.dp)
                 .shadow(elevation = 6.dp, shape = RoundedCornerShape(30.dp)),
             shape = RoundedCornerShape(30.dp)
         ) {
@@ -159,9 +159,8 @@ fun LoginScreen(navController: NavController) {
                 fontWeight = FontWeight.Bold
             )
         }
-        Row(
-            modifier = Modifier.offset(y = (160).dp)
-        ) {
+        Spacer(modifier = Modifier.height(199.dp))
+        Row {
             Text(
                 text = "Не маєте облікового запису? ",
                 fontWeight = FontWeight.Medium
