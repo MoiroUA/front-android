@@ -50,17 +50,17 @@ fun RegistrationScreen(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(top = 70.dp)
-            .background(MaterialTheme.colors.background),
+            .background(MaterialTheme.colors.background)
+            .padding(top = 80.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
             text = "Реєстрація",
             fontSize = 50.sp,
             fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(bottom = 52.dp),
             color = MaterialTheme.colors.primary
         )
+        Spacer(modifier = Modifier.height(50.dp))
         TextField(
             value = name,
             onValueChange = { name = it },
@@ -76,11 +76,11 @@ fun RegistrationScreen(navController: NavController) {
                 cursorColor = MaterialTheme.colors.secondary
             ),
             modifier = Modifier
-                .size(width = 297.dp, height = 80.dp)
-                .padding(bottom = 26.dp)
+                .size(width = 297.dp, height = 50.dp)
                 .shadow(elevation = 6.dp, shape = RoundedCornerShape(30.dp)),
             shape = RoundedCornerShape(30.dp)
         )
+        Spacer(modifier = Modifier.height(23.dp))
         TextField(
             value = surname,
             onValueChange = { surname = it },
@@ -96,11 +96,11 @@ fun RegistrationScreen(navController: NavController) {
                 cursorColor = MaterialTheme.colors.secondary
             ),
             modifier = Modifier
-                .size(width = 297.dp, height = 80.dp)
-                .padding(bottom = 26.dp)
+                .size(width = 297.dp, height = 50.dp)
                 .shadow(elevation = 6.dp, shape = RoundedCornerShape(30.dp)),
             shape = RoundedCornerShape(30.dp)
         )
+        Spacer(modifier = Modifier.height(23.dp))
         TextField(
             value = email,
             onValueChange = { email = it },
@@ -116,11 +116,11 @@ fun RegistrationScreen(navController: NavController) {
                 cursorColor = MaterialTheme.colors.secondary
             ),
             modifier = Modifier
-                .size(width = 297.dp, height = 80.dp)
-                .padding(bottom = 26.dp)
+                .size(width = 297.dp, height = 50.dp)
                 .shadow(elevation = 6.dp, shape = RoundedCornerShape(30.dp)),
             shape = RoundedCornerShape(30.dp)
         )
+        Spacer(modifier = Modifier.height(23.dp))
         TextField(
             value = password,
             onValueChange = { password = it },
@@ -138,11 +138,11 @@ fun RegistrationScreen(navController: NavController) {
                 cursorColor = MaterialTheme.colors.secondary
             ),
             modifier = Modifier
-                .size(width = 297.dp, height = 80.dp)
-                .padding(bottom = 26.dp)
+                .size(width = 297.dp, height = 50.dp)
                 .shadow(elevation = 6.dp, shape = RoundedCornerShape(30.dp)),
             shape = RoundedCornerShape(30.dp)
         )
+        Spacer(modifier = Modifier.height(23.dp))
         TextField(
             value = passwordConfirm,
             onValueChange = { passwordConfirm = it },
@@ -160,11 +160,11 @@ fun RegistrationScreen(navController: NavController) {
                 cursorColor = MaterialTheme.colors.secondary
             ),
             modifier = Modifier
-                .size(width = 297.dp, height = 80.dp)
-                .padding(bottom = 26.dp)
+                .size(width = 297.dp, height = 50.dp)
                 .shadow(elevation = 6.dp, shape = RoundedCornerShape(30.dp)),
             shape = RoundedCornerShape(30.dp)
         )
+        Spacer(modifier = Modifier.height(45.dp))
         Button(
             onClick = {
                 if (name.isNotEmpty() && surname.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty() && password == passwordConfirm) {
@@ -203,7 +203,7 @@ fun RegistrationScreen(navController: NavController) {
             },
             shape = RoundedCornerShape(30.dp),
             modifier = Modifier
-                .size(width = 297.dp, height = 59.dp)
+                .size(width = 297.dp, height = 50.dp)
                 .shadow(elevation = 6.dp, shape = RoundedCornerShape(30.dp))
         ) {
             Text(
@@ -212,6 +212,7 @@ fun RegistrationScreen(navController: NavController) {
                 fontWeight = FontWeight.Bold
             )
         }
+        Spacer(modifier = Modifier.height(39.dp))
         Row(
             modifier = Modifier.padding(top = 32.dp)
         ) {
