@@ -22,7 +22,7 @@ fun AuthNav() {
             LoginScreen(navController = navController)
         }
         composable(route = ScreensRoutes.MapScreen.route) {
-            MapScreen(navController = navController)
+            MapScreen()
         }
     }
 }

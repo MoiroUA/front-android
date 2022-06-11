@@ -16,7 +16,7 @@ fun BottomBarNav(navHostController: NavHostController) {
     val navController = rememberNavController()
     NavHost(navController = navHostController, startDestination = ScreensRoutes.MapScreen.route) {
         composable(route = ScreensRoutes.MapScreen.route) {
-            MapScreen(navController = navController)
+            MapScreen()
         }
         composable(route = ScreensRoutes.NewsScreen.route) {
             NewsScreen(navController = navController)
