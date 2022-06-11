@@ -21,12 +21,23 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import io.moiro.vision.navigation.ScreensRoutes
+import io.moiro.vision.shared.managers.SessionManager
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
-fun ProfileScreen(navController: NavController) {
+fun ProfileScreen(
+    navController: NavController,
+    viewModel: ProfileViewModel = viewModel()
+) {
     val systemUiController = rememberSystemUiController()
     val darkTheme = isSystemInDarkTheme()
     val context = LocalContext.current
+    viewModel.getUserInfo(context)
+    val fullName = viewModel.name + " " + viewModel.surname
+    val phoneNumber = viewModel.phone
+    val userEmail = viewModel.email
+    val hasSub = viewModel.isSubscribed
 
     SideEffect {
         systemUiController.setStatusBarColor(
@@ -61,7 +72,7 @@ fun ProfileScreen(navController: NavController) {
         )
         Spacer(modifier = Modifier.height(14.dp))
         Text(
-            text = "Ігор Вілков",
+            text = fullName,
             fontSize = 23.sp,
             fontWeight = FontWeight.Black,
             color = MaterialTheme.colors.onBackground
@@ -76,7 +87,7 @@ fun ProfileScreen(navController: NavController) {
             )
             Spacer(modifier = Modifier.height(15.dp))
             Text(
-                text = "+380 98 404 69 01",
+                text = if (phoneNumber == "") "Відсутній" else phoneNumber,
                 fontSize = 15.sp,
                 fontWeight = FontWeight.Medium,
                 color = MaterialTheme.colors.primary
@@ -90,7 +101,7 @@ fun ProfileScreen(navController: NavController) {
             )
             Spacer(modifier = Modifier.height(15.dp))
             Text(
-                text = "igorvilkov404@gmail.com",
+                text = userEmail,
                 fontSize = 15.sp,
                 fontWeight = FontWeight.Medium,
                 color = MaterialTheme.colors.primary
@@ -104,7 +115,7 @@ fun ProfileScreen(navController: NavController) {
             )
             Spacer(modifier = Modifier.height(15.dp))
             Text(
-                text = "O(I)+",
+                text = if (hasSub) "O(I)+" else "Відсутня",
                 fontSize = 15.sp,
                 fontWeight = FontWeight.Medium,
                 color = MaterialTheme.colors.primary
@@ -132,7 +143,15 @@ fun ProfileScreen(navController: NavController) {
             text = "Вийти з облікового запису",
             fontSize = 15.sp,
             fontWeight = FontWeight.ExtraBold,
-            color = MaterialTheme.colors.error
+            color = MaterialTheme.colors.error,
+            modifier = Modifier.clickable {
+                SessionManager(context).deleteToken()
+                if (SessionManager(context).fetchAuthToken() == null) {
+                    navController.navigate(ScreensRoutes.LoginScreen.route)
+                } else {
+                    Toast.makeText(context, "Щось пішло не так", Toast.LENGTH_SHORT).show()
+                }
+            }
         )
     }
 }
